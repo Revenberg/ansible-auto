@@ -8,4 +8,5 @@
     path: /media/ssd
     src: "LABEL={{ label }}"
     fstype: exfat
-    state: present
+    state: mounted
+
