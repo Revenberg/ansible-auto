@@ -1,0 +1,12 @@
+---
+- name: Ansible - start
+  hosts: localhost 
+  become: yes
+  become_user: root
+
+  roles:
+    - packages
+    - hifiberry
+    - {role: nodered,
+       become: yes,
+       become_user: pi}

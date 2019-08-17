@@ -1,0 +1,44 @@
+- name: "Ensure /boot/config.txt contains lines"
+  lineinfile:
+    name: /boot/config.txt
+    line: "{{ item }}"
+    state: present
+  with_items:
+    - "/boot/config.txt"
+    - "dtoverlay=hifiberry-dac"
+    - "dtparam"
+
+- name: "Ensure /etc/modules contains lines"
+  lineinfile:
+    name: /etc/modules
+    line: "{{ item }}"
+    state: present
+  with_items:
+    - "snd_soc_bcm2708"
+    - "bcm2708_dmaengine"
+    - "snd_soc_pcm512x"
+    - "snd_soc_hifiberry_dacplus"
+
+- name: "Ensure /etc/asound.conf config"
+  blockinfile:
+    name: /etc/asound.conf
+    create: yes
+    state: present
+    block: |
+      pcm.!default  {
+        type hw card 0
+      }
+      ctl.!default {
+        type hw card 0
+      }
+
+#- name: "set time to RTC"
+#  lineinfile:
+#    name: /sys/class/i2c-adapter/i2c-1/new_device
+#    line: "ds1307 0x68"
+
+#- name: "write value"
+#  command: "hwclock -w"
+
+
+
