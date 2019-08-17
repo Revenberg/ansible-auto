@@ -1,0 +1,22 @@
+---
+
+- include: packages.yaml
+
+- include: packages-debian.yaml
+  when: ansible_os_family == 'Debian'
+
+- name: Mopidy conf
+  ini_file:
+    dest: /etc/mopidy/mopidy.conf
+    section: "{{ item.section }}"
+    option: "{{ item.option }}"
+    value: "{{ item.value }}"
+    state: present
+  with_items: "{{ mopidy_settings }}"
+  notify: restart mopidy
+
+- name: Mopidy service
+  service:
+    name: mopidy
+    state: started
+    enabled: yes
