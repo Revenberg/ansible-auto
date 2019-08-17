@@ -1,3 +1,5 @@
+- include: packages.yaml
+
 - name: "Ensure /boot/config.txt contains lines"
   lineinfile:
     name: /boot/config.txt
@@ -7,6 +9,14 @@
     - "/boot/config.txt"
     - "dtoverlay=hifiberry-dac"
     - "dtparam"
+  notify: reboot
+
+- name: "Ensure /boot/config.txt comment out"
+  replace:
+    path: /boot/config.txt
+    regexp: '^dtparam=audio=on'
+    replace: '#dtparam=audio=on'
+  notify: reboot
 
 - name: "Ensure /etc/modules contains lines"
   lineinfile:
@@ -18,6 +28,7 @@
     - "bcm2708_dmaengine"
     - "snd_soc_pcm512x"
     - "snd_soc_hifiberry_dacplus"
+  notify: reboot
 
 - name: "Ensure /etc/asound.conf config"
   blockinfile:
@@ -39,6 +50,4 @@
 
 #- name: "write value"
 #  command: "hwclock -w"
-
-
 

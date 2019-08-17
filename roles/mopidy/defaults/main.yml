@@ -2,15 +2,26 @@
 
 mopidy_password: ''
 mopidy_hostname: '0.0.0.0'
-mopidy_media_dir: '~'
+mopidy_media_dir: '/media'
 
-mopidy_packages:
+#mopidy_packages:
+#  - upmpdcli
+
+mopidy_pip_packages:
   - mopidy-musicbox-webclient
+  - Mopidy-Iris
+  - Mopidy-Mobile
+  - Mopidy-Mopify
+  - Mopidy-WebSettings
 
 # 'ini_file' module settings for mopidy.conf
 mopidy_settings:
+  - { section: 'audio', option: 'output', value: 'alsasink' }  
   - { section: 'mpd', option: 'password', value: '{{ mopidy_password }}' }
   - { section: 'mpd', option: 'hostname', value: '{{ mopidy_hostname }}' }
   - { section: 'musicbox_webclient', option: 'enabled', value: 'true' }
   - { section: 'musicbox_webclient', option: 'musicbox', value: 'TRUE' }
   - { section: 'musicbox_webclient', option: 'on_track_click', value: 'PLAY_ALL' }
+  - { section: 'websettings', option: 'enabled', value: 'true' }
+  - { section: 'websettings', option: 'musicbox', value: 'true' }
+  - { section: 'websettings', option: 'config_file', value: '/etc/mopidy/mopidy.conf' }

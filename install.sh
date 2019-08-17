@@ -17,4 +17,4 @@ if [ ! -f "/home/pi/.pswrd" ]; then
   echo $passwrd > /home/pi/.pswrd
 fi
 
-ansible-playbook /home/pi/ansible-node-red/node-red.yaml --vault-password-file /home/pi/.pswrd
+ansible-playbook /home/pi/ansible-node-red/main.yaml --vault-password-file /home/pi/.pswrd
