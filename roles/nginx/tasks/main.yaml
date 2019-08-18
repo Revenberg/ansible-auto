@@ -1,0 +1,16 @@
+- name: "install apt-get packages"
+  apt:
+    name: [ "nginx" ]
+    state: present
+    update_cache: yes
+
+- name: copy default
+  copy:
+    src: default
+    dest: /etc/nginx/sites-enabled/default
+
+- name: nginx service
+  service:
+    name: nginx
+    state: started
+    enabled: yes

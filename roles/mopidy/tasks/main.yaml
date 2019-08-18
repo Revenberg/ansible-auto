@@ -1,14 +1,19 @@
 ---
+- name: check if rules file exists
+  stat:
+    path: /etc/mopidy/mopidy.conf
+  register: stat_result
 
 - include: packages.yaml
 
 - include: packages-debian.yaml
   when: ansible_os_family == 'Debian'
 
-- name: copy
+- name: copy mopidy.conf
   copy:
     src: mopidy.conf
     dest: /etc/mopidy/mopidy.conf
+  when: stat_result.stat.exists == False
 
 - name: Mopidy conf
   ini_file:
@@ -19,6 +24,7 @@
     state: present
   with_items: "{{ mopidy_settings }}"
   notify: restart mopidy
+  when: stat_result.stat.exists == False
 
 - name: Mopidy service
   service:

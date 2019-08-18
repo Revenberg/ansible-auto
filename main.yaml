@@ -12,3 +12,5 @@
       become: yes,
       become_user: pi }
   - mopidy
+  - nginx
+
