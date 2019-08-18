@@ -30,18 +30,10 @@
     - "snd_soc_hifiberry_dacplus"
   notify: reboot
 
-- name: "Ensure /etc/asound.conf config"
-  blockinfile:
-    name: /etc/asound.conf
-    create: yes
-    state: present
-    block: |
-      pcm.!default  {
-        type hw card 0
-      }
-      ctl.!default {
-        type hw card 0
-      }
+- name: "copy asound.conf"
+  copy:
+    src: asound.conf
+    dest: /etc/asound.conf
 
 #- name: "set time to RTC"
 #  lineinfile:

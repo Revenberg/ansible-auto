@@ -7,7 +7,7 @@
 
 - name: copy
   copy:
-    src: /home/pi/.config/mopidy/mopidy.conf
+    src: mopidy.conf
     dest: /etc/mopidy/mopidy.conf
 
 - name: Mopidy conf
