@@ -1,5 +1,9 @@
 #!/bin/bash
 if [ ! -f "/home/pi/.pswrd" ]; then
+  echo "vault password: "
+  read passwrd
+  echo $passwrd > /home/pi/.pswrd
+  
   sudo apt-get update 
   sudo apt-get autoremove
 
@@ -10,11 +14,8 @@ if [ ! -f "/home/pi/.pswrd" ]; then
   sudo pip install ansible 
   sudo pip install markupsafe 
 
-  git clone https://github.com/Revenberg/ansible-node-red.git
+  git clone https://github.com/Revenberg/auto.git
 
-  echo "vault password: "
-  read passwrd
-  echo $passwrd > /home/pi/.pswrd
 fi
 
-ansible-playbook /home/pi/ansible-node-red/main.yaml --vault-password-file /home/pi/.pswrd
+ansible-playbook /home/pi/ansible-auto/main.yaml --vault-password-file /home/pi/.pswrd
