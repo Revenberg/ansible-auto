@@ -14,7 +14,7 @@ if [ ! -f "/home/pi/.pswrd" ]; then
   sudo pip install ansible 
   sudo pip install markupsafe 
 
-  git clone https://github.com/Revenberg/auto.git
+  git clone https://github.com/Revenberg/ansible-auto.git
 
 fi
 
