@@ -1,7 +1,8 @@
 ---
 
 mopidy_password: ''
-mopidy_hostname: "{{ hostvars[inventory_hostname]['ansible_default_ipv4']['address'] }}"
+--mopidy_hostname: "{{ hostvars[inventory_hostname]['ansible_default_ipv4']['address'] }}"
+mopidy_hostname: 127.0.0.1
 mopidy_media_dir: '/media'
 
 #mopidy_packages:

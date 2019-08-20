@@ -1,6 +1,6 @@
 - name: "install apt-get packages"
   apt:
-    name: [ "nginx" ]
+    name: [ "nginx", "php-fpm" ]
     state: present
     update_cache: yes
 
