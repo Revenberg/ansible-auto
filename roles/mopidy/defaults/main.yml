@@ -1,8 +1,7 @@
 ---
 
 mopidy_password: ''
---mopidy_hostname: "{{ hostvars[inventory_hostname]['ansible_default_ipv4']['address'] }}"
-mopidy_hostname: 127.0.0.1
+mopidy_hostname: "{{ hostvars[inventory_hostname]['ansible_default_ipv4']['address'] }}"
 mopidy_media_dir: '/media'
 
 #mopidy_packages:
@@ -43,7 +42,6 @@ mopidy_settings:
   - { section: 'mpd', option: 'hostname', value: '{{ mopidy_hostname }}' }
   - { section: 'mpd', option: 'port', value: '6600' }
   - { section: 'musicbox_webclient', option: 'enabled', value: 'true' }
-  - { section: 'musicbox_webclient', option: 'musicbox', value: 'TRUE' }
   - { section: 'musicbox_webclient', option: 'on_track_click', value: 'PLAY_ALL' }
   - { section: 'websettings', option: 'enabled', value: 'true' }
   - { section: 'websettings', option: 'musicbox', value: 'true' }
