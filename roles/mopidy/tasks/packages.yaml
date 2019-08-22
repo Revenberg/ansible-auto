@@ -12,5 +12,6 @@
       - gcc
       - python-dev
       - python-pip
+      - gstreamer1.0-libav
     state: present
   notify: restart mopidy
