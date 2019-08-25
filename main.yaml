@@ -6,6 +6,7 @@
 
   roles:
   - packages
+  - zram
   - usbdrive
   - hifiberry
   - { role: nodered,
